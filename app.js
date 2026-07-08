@@ -600,6 +600,12 @@ const UIController = {
             localStorage.setItem('egiai_gemini_key', defaultKey);
             localStorage.setItem('egiai_brain_mode', 'simulated');
         }
+        if (localStorage.getItem('egiai_proxy_base') === null) {
+            localStorage.setItem('egiai_proxy_base', 'https://models.inference.ai.azure.com');
+        }
+        if (localStorage.getItem('egiai_proxy_model') === null) {
+            localStorage.setItem('egiai_proxy_model', 'gpt-4o-mini');
+        }
 
         // Initialize UI indicators based on loaded mode
         const brainMode = localStorage.getItem('egiai_brain_mode') || 'simulated';
@@ -660,14 +666,16 @@ const UIController = {
         if (mode === 'gemini') {
             this.apiKeyGroup.style.display = 'block';
             this.geminiKeyInput.required = true;
+            this.geminiKeyInput.placeholder = "Paste your Gemini API key (starts with AIza)...";
             this.keyLabel.textContent = "Gemini API Key";
             this.keyHelp.innerHTML = `Get a free API Key from <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.`;
             this.proxyConfigGroup.style.display = 'none';
         } else if (mode === 'proxy') {
             this.apiKeyGroup.style.display = 'block';
             this.geminiKeyInput.required = true;
-            this.keyLabel.textContent = "Proxy API Key";
-            this.keyHelp.innerHTML = `Use a public key starting with \`sk-\` from the <a href="https://github.com/alistaitsacle/free-llm-api-keys" target="_blank" rel="noopener noreferrer">GitHub Key List</a>.`;
+            this.geminiKeyInput.placeholder = "Paste your GitHub Token (ghp_...) or Proxy Key...";
+            this.keyLabel.textContent = "Proxy API Key / GitHub Token";
+            this.keyHelp.innerHTML = `Enter your GitHub Personal Access Token (starts with \`ghp_\`) to query free GitHub Models, or any OpenAI-compatible key.`;
             this.proxyConfigGroup.style.display = 'block';
         } else {
             this.apiKeyGroup.style.display = 'none';
@@ -679,8 +687,8 @@ const UIController = {
     openSettingsModal() {
         const brainMode = localStorage.getItem('egiai_brain_mode') || 'simulated';
         const geminiKey = localStorage.getItem('egiai_gemini_key') || '';
-        const proxyBase = localStorage.getItem('egiai_proxy_base') || 'https://aiapiv2.pekpik.com/v1';
-        const proxyModel = localStorage.getItem('egiai_proxy_model') || 'openai/gpt-chat-latest';
+        const proxyBase = localStorage.getItem('egiai_proxy_base') || 'https://models.inference.ai.azure.com';
+        const proxyModel = localStorage.getItem('egiai_proxy_model') || 'gpt-4o-mini';
 
         // Select correct radio button
         const radioToSelect = this.settingsForm.querySelector(`input[name="brain-mode"][value="${brainMode}"]`);
