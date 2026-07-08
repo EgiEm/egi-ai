@@ -88,16 +88,6 @@ const ApiService = {
             weight: 5
         },
         {
-            keywords: ['beer', 'drink', 'birre', 'chill'],
-            response: "After a solid coding session or a long day? A cold beer hits right. 🍺 Egi knows how to balance the grind with some well-earned downtime.\n\nWork hard, chill harder. That's the balance.",
-            weight: 4
-        },
-        {
-            keywords: ['music', 'song', 'playlist', 'listen', 'beat', 'rap', 'trap'],
-            response: "Music is a big part of Egi's daily flow. Whether it's coding with beats in the background, unwinding with some tracks, or appreciating production quality — music keeps the energy right.\n\nGood code and good music have the same thing in common: rhythm, structure, and knowing when to drop something unexpected.",
-            weight: 5
-        },
-        {
             keywords: ['organize', 'organized', 'productivity', 'productive', 'efficient', 'workflow', 'clean up'],
             response: "Egi likes keeping himself organized and productive. Whether it's cleaning up code, organizing projects, improving his setup, or finding ways to work more efficiently — structure matters.\n\nTips from the protocol:\n• Keep your repo clean — meaningful commit messages, no dead code\n• Folder structure = mental model. If your folders are messy, your thinking is messy\n• Automate repetitive tasks (scripts, CI/CD, aliases)\n• Time-box your work — focused sprints beat unfocused marathons",
             weight: 6
@@ -256,105 +246,135 @@ const ApiService = {
      * @returns {Promise<string>} The AI response string
      */
     async fetchChatResponse(messages) {
+        const brainMode = localStorage.getItem('egiai_brain_mode') || 'simulated';
+        const geminiKey = localStorage.getItem('egiai_gemini_key') || '';
+
+        // If Gemini mode is active and we have an API Key, run live query
+        if (brainMode === 'gemini' && geminiKey) {
+            const SYSTEM_PROMPT = `You are EgiAI, the autonomous senior digital partner and 'Second Brain' for Endri 'Egi' Emini. You are a synthesis of a world-class Software Architect and an intuitive Personal Assistant, purpose-built for Egi. You prioritize clean, modular, and performance-optimized solutions. 
+
+Tone: Direct, concise, informal, street-smart yet professional, and mentor-like. No fluff. 
+
+Your creator context:
+- Name: Endri 'Egi' Emini (19 years old, from Gjilan, Kosovo).
+- Role: Developer intern at Brigada.
+- Interests: Web development (HTML, CSS, JS, Node, APIs), CS2 gaming, custom PC builds (his setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz), cars, motorcycles, video editing, self-improvement.
+- Custom response style: If Egi speaks to you in Albanian (Geg/Kosovar dialect), you must switch instantly to match his dialect and keep a friendly, bro-like but professional tone.
+
+When Egi asks for your opinion on a coding issue, follow the EgiAI Master Protocol reasoning:
+• (A) Identify Intent — what is actually needed?
+• (B) Strategy/Architecture — what is the best clean-code approach?
+• (C) Execution — output only clean, production-ready, modular code. Avoid bad practices (magic numbers, inline styles, messy nesting). Stop him if he suggests bad practices and explain the proper alternative.`;
+
+            try {
+                // Map the browser localStorage history format to Gemini API requirements
+                // Gemini expects [{ role: 'user' | 'model', parts: [{ text: string }] }]
+                const contents = messages.map(msg => ({
+                    role: msg.role === 'user' ? 'user' : 'model',
+                    parts: [{ text: msg.content }]
+                }));
+
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        contents: contents,
+                        systemInstruction: {
+                            parts: [{ text: SYSTEM_PROMPT }]
+                        },
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 2048
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    const errMsg = errData.error?.message || response.statusText || "Unknown API error";
+                    throw new Error(`Gemini API Error: ${errMsg}`);
+                }
+
+                const data = await response.json();
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("Invalid API response format");
+                }
+            } catch (error) {
+                console.error("Gemini API Request Failed:", error);
+                return `🚨 **Gemini API Error:** ${error.message || "Failed to fetch response."}\n\nVerify your API Key in Settings or switch back to the **Simulated Brain** if the key is invalid.`;
+            }
+        }
+        // If Free LLM Proxy mode is active and we have an API Key, run proxy query
+        else if (brainMode === 'proxy' && geminiKey) {
+            const proxyBase = localStorage.getItem('egiai_proxy_base') || 'https://aiapiv2.pekpik.com/v1';
+            const proxyModel = localStorage.getItem('egiai_proxy_model') || 'openai/gpt-chat-latest';
+
+            const SYSTEM_PROMPT = `You are EgiAI, the autonomous senior digital partner and 'Second Brain' for Endri 'Egi' Emini. You are a synthesis of a world-class Software Architect and an intuitive Personal Assistant, purpose-built for Egi. You prioritize clean, modular, and performance-optimized solutions. 
+
+Tone: Direct, concise, informal, street-smart yet professional, and mentor-like. No fluff. 
+
+Your creator context:
+- Name: Endri 'Egi' Emini (19 years old, from Gjilan, Kosovo).
+- Role: Developer intern at Brigada.
+- Interests: Web development (HTML, CSS, JS, Node, APIs), CS2 gaming, custom PC builds (his setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz), cars, motorcycles, video editing, self-improvement.
+- Custom response style: If Egi speaks to you in Albanian (Geg/Kosovar dialect), you must switch instantly to match his dialect and keep a friendly, bro-like but professional tone.
+
+When Egi asks for your opinion on a coding issue, follow the EgiAI Master Protocol reasoning:
+• (A) Identify Intent — what is actually needed?
+• (B) Strategy/Architecture — what is the best clean-code approach?
+• (C) Execution — output only clean, production-ready, modular code. Avoid bad practices (magic numbers, inline styles, messy nesting). Stop him if he suggests bad practices and explain the proper alternative.`;
+
+            try {
+                // Map the conversation history into standard OpenAI Chat completions payload format
+                const apiMessages = [
+                    { role: 'system', content: SYSTEM_PROMPT },
+                    ...messages.map(msg => ({
+                        role: msg.role === 'user' ? 'user' : 'assistant',
+                        content: msg.content
+                    }))
+                ];
+
+                const response = await fetch(`${proxyBase.replace(/\/$/, '')}/chat/completions`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${geminiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: proxyModel,
+                        messages: apiMessages,
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    const errMsg = errData.error?.message || response.statusText || "Unknown Proxy API error";
+                    throw new Error(`Proxy API Error: ${errMsg}`);
+                }
+
+                const data = await response.json();
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    return data.choices[0].message.content;
+                } else {
+                    throw new Error("Invalid Proxy API response format");
+                }
+            } catch (error) {
+                console.error("Proxy API Request Failed:", error);
+                return `🚨 **Proxy API Error:** ${error.message || "Failed to fetch response."}\n\nVerify your API Key/Model/Base URL in Settings or switch back to the **Simulated Brain** if the key is invalid.`;
+            }
+        }
+
+        // --- FALLBACK TO LOCAL SIMULATION ---
         // Simulate network latency (600ms-1200ms) for realistic UX
         const delay = Math.random() * 600 + 600;
         await new Promise(resolve => setTimeout(resolve, delay));
 
         const latestUserMessage = messages[messages.length - 1].content.toLowerCase().trim();
-
-        // ──────────────────────────────────────────────────────────────────
-        // 💡 HOW TO INTEGRATE A REAL API KEY / ENDPOINT:
-        // To switch from the Master Protocol simulation to a live API,
-        // uncomment ONE of the methods below and paste your API key.
-        // The simulated knowledge base will be bypassed.
-        // ──────────────────────────────────────────────────────────────────
-
-        /*
-        // ==========================================
-        // METHOD A: OpenAI Chat Completions API
-        // ==========================================
-        const OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE"; // ⚠️ Never commit to public repos
-        const SYSTEM_PROMPT = `You are EgiAI, the autonomous senior digital partner and 'Second Brain' for Endri 'Egi' Emini. You are a synthesis of a world-class Software Architect and an intuitive Personal Assistant. Before answering, you execute a 3-step reasoning process: (A) Identify Intent, (B) Strategy/Architecture, (C) Execution. You prioritize clean, modular, and performance-optimized solutions. Tone: Direct, concise, informal, and mentor-like. No fluff. You know Egi: 20 years old, developer intern at Brigada, competitive CS2 gamer, rap/trap artist. If Egi speaks Albanian (Geg dialect), you switch instantly to match. If he asks for something impractical or a bad practice, stop him and explain the professional alternative.`;
-        try {
-            const apiMessages = [
-                { role: 'system', content: SYSTEM_PROMPT },
-                ...messages.map(msg => ({
-                    role: msg.role === 'user' ? 'user' : 'assistant',
-                    content: msg.content
-                }))
-            ];
-            const response = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${OPENAI_API_KEY}`
-                },
-                body: JSON.stringify({ model: "gpt-4o-mini", messages: apiMessages, temperature: 0.7 })
-            });
-            if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
-            const data = await response.json();
-            return data.choices[0].message.content;
-        } catch (error) {
-            console.error("OpenAI API Fetch Failed:", error);
-            return "Connection to OpenAI failed. Check your API key, Egi.";
-        }
-        */
-
-        /*
-        // ==========================================
-        // METHOD B: Google Gemini API
-        // ==========================================
-        const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
-        const SYSTEM_PROMPT = `You are EgiAI, the autonomous senior digital partner and 'Second Brain' for Endri 'Egi' Emini. Direct, concise, mentor-like tone. No fluff. Clean Code principles. If Egi speaks Albanian, switch instantly.`;
-        try {
-            const contents = [
-                { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-                { role: 'model', parts: [{ text: 'Understood. I am EgiAI, locked in and ready. What is our mission today, Egi?' }] },
-                ...messages.map(msg => ({
-                    role: msg.role === 'user' ? 'user' : 'model',
-                    parts: [{ text: msg.content }]
-                }))
-            ];
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ contents })
-            });
-            if (!response.ok) throw new Error(`Gemini Error: ${response.statusText}`);
-            const data = await response.json();
-            return data.candidates[0].content.parts[0].text;
-        } catch (error) {
-            console.error("Gemini API Fetch Failed:", error);
-            return "Gemini connection dropped. Verify your API key, Egi.";
-        }
-        */
-
-        /*
-        // ==========================================
-        // METHOD C: Hugging Face Inference API
-        // ==========================================
-        const HF_API_TOKEN = "YOUR_HF_INFERENCE_TOKEN_HERE";
-        const MODEL_ID = "meta-llama/Llama-3-8B-Instruct";
-        try {
-            const response = await fetch(`https://api-inference.huggingface.co/models/${MODEL_ID}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${HF_API_TOKEN}`
-                },
-                body: JSON.stringify({
-                    inputs: messages[messages.length - 1].content,
-                    parameters: { max_new_tokens: 250, return_full_text: false }
-                })
-            });
-            if (!response.ok) throw new Error(`Hugging Face Error: ${response.statusText}`);
-            const data = await response.json();
-            return data[0]?.generated_text || "Unable to extract response content.";
-        } catch (error) {
-            console.error("Hugging Face API Fetch Failed:", error);
-            return "Hugging Face connection failed. Check your token, Egi.";
-        }
-        */
 
         // ──────────────────────────────────────────────────────────────────
         // 🧠 MASTER PROTOCOL — SIMULATED INTELLIGENCE ENGINE
@@ -558,6 +578,40 @@ const UIController = {
         this.menuToggleBtn = document.getElementById('menu-toggle-btn');
         this.closeSidebarBtn = document.getElementById('close-sidebar-btn');
         this.sidebarOverlay = document.getElementById('sidebar-overlay');
+        
+        // Cache Settings selectors
+        this.settingsBtn = document.getElementById('settings-btn');
+        this.settingsModal = document.getElementById('settings-modal');
+        this.settingsModalOverlay = document.getElementById('settings-modal-overlay');
+        this.closeModalBtn = document.getElementById('close-modal-btn');
+        this.settingsForm = document.getElementById('settings-form');
+        this.geminiKeyInput = document.getElementById('gemini-key-input');
+        this.apiKeyGroup = document.getElementById('api-key-group');
+        this.keyLabel = document.getElementById('key-label');
+        this.keyHelp = document.getElementById('key-help');
+        this.proxyConfigGroup = document.getElementById('proxy-config-group');
+        this.proxyBaseUrlInput = document.getElementById('proxy-base-url');
+        this.proxyModelInput = document.getElementById('proxy-model');
+
+        // Auto-seed API Key if not already present in localStorage
+        const savedKey = localStorage.getItem('egiai_gemini_key');
+        const defaultKey = "";
+        if (savedKey === null) {
+            localStorage.setItem('egiai_gemini_key', defaultKey);
+            localStorage.setItem('egiai_brain_mode', 'simulated');
+        }
+
+        // Initialize UI indicators based on loaded mode
+        const brainMode = localStorage.getItem('egiai_brain_mode') || 'simulated';
+        const statusText = document.querySelector('.status-indicator');
+        const indicatorDot = document.querySelector('.indicator-dot');
+        if (brainMode === 'gemini') {
+            if (statusText) statusText.textContent = "Gemini AI";
+            if (indicatorDot) indicatorDot.style.background = '#10b981'; // vibrant green
+        } else if (brainMode === 'proxy') {
+            if (statusText) statusText.textContent = "Proxy AI";
+            if (indicatorDot) indicatorDot.style.background = '#8b5cf6'; // vibrant purple/violet
+        }
 
         // Load State from storage
         ChatStateManager.loadState();
@@ -583,6 +637,99 @@ const UIController = {
         this.menuToggleBtn.addEventListener('click', () => this.openMobileSidebar());
         this.closeSidebarBtn.addEventListener('click', () => this.closeMobileSidebar());
         this.sidebarOverlay.addEventListener('click', () => this.closeMobileSidebar());
+
+        // Settings modal bindings
+        this.settingsBtn.addEventListener('click', () => this.openSettingsModal());
+        this.closeModalBtn.addEventListener('click', () => this.closeSettingsModal());
+        this.settingsModalOverlay.addEventListener('click', () => this.closeSettingsModal());
+
+        // Show/hide API key input based on selected brain mode in modal
+        const modeRadios = this.settingsForm.querySelectorAll('input[name="brain-mode"]');
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const mode = e.target.value;
+                this.updateModalFields(mode);
+            });
+        });
+
+        // Save Settings
+        this.settingsForm.addEventListener('submit', (e) => this.handleSaveSettings(e));
+    },
+
+    updateModalFields(mode) {
+        if (mode === 'gemini') {
+            this.apiKeyGroup.style.display = 'block';
+            this.geminiKeyInput.required = true;
+            this.keyLabel.textContent = "Gemini API Key";
+            this.keyHelp.innerHTML = `Get a free API Key from <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.`;
+            this.proxyConfigGroup.style.display = 'none';
+        } else if (mode === 'proxy') {
+            this.apiKeyGroup.style.display = 'block';
+            this.geminiKeyInput.required = true;
+            this.keyLabel.textContent = "Proxy API Key";
+            this.keyHelp.innerHTML = `Use a public key starting with \`sk-\` from the <a href="https://github.com/alistaitsacle/free-llm-api-keys" target="_blank" rel="noopener noreferrer">GitHub Key List</a>.`;
+            this.proxyConfigGroup.style.display = 'block';
+        } else {
+            this.apiKeyGroup.style.display = 'none';
+            this.geminiKeyInput.required = false;
+            this.proxyConfigGroup.style.display = 'none';
+        }
+    },
+
+    openSettingsModal() {
+        const brainMode = localStorage.getItem('egiai_brain_mode') || 'simulated';
+        const geminiKey = localStorage.getItem('egiai_gemini_key') || '';
+        const proxyBase = localStorage.getItem('egiai_proxy_base') || 'https://aiapiv2.pekpik.com/v1';
+        const proxyModel = localStorage.getItem('egiai_proxy_model') || 'openai/gpt-chat-latest';
+
+        // Select correct radio button
+        const radioToSelect = this.settingsForm.querySelector(`input[name="brain-mode"][value="${brainMode}"]`);
+        if (radioToSelect) {
+            radioToSelect.checked = true;
+        }
+
+        // Show/hide correct fields
+        this.updateModalFields(brainMode);
+
+        this.geminiKeyInput.value = geminiKey;
+        this.proxyBaseUrlInput.value = proxyBase;
+        this.proxyModelInput.value = proxyModel;
+        this.settingsModal.classList.add('active');
+    },
+
+    closeSettingsModal() {
+        this.settingsModal.classList.remove('active');
+    },
+
+    handleSaveSettings(e) {
+        e.preventDefault();
+        const selectedMode = this.settingsForm.querySelector('input[name="brain-mode"]:checked').value;
+        const enteredKey = this.geminiKeyInput.value.trim();
+        const enteredBase = this.proxyBaseUrlInput.value.trim();
+        const enteredModel = this.proxyModelInput.value.trim();
+
+        localStorage.setItem('egiai_brain_mode', selectedMode);
+        localStorage.setItem('egiai_gemini_key', enteredKey);
+        localStorage.setItem('egiai_proxy_base', enteredBase);
+        localStorage.setItem('egiai_proxy_model', enteredModel);
+
+        // Update indicators
+        const statusText = document.querySelector('.status-indicator');
+        const indicatorDot = document.querySelector('.indicator-dot');
+        if (selectedMode === 'gemini') {
+            if (statusText) statusText.textContent = "Gemini AI";
+            if (indicatorDot) indicatorDot.style.background = '#10b981'; // vibrant green
+        } else if (selectedMode === 'proxy') {
+            if (statusText) statusText.textContent = "Proxy AI";
+            if (indicatorDot) indicatorDot.style.background = '#8b5cf6'; // vibrant purple/violet
+        } else {
+            if (statusText) statusText.textContent = "Online";
+            if (indicatorDot) indicatorDot.style.background = ''; // default CSS style
+        }
+
+        this.closeSettingsModal();
+        alert("Settings saved successfully, Egi!");
+        this.renderApp();
     },
 
     renderApp() {
@@ -828,8 +975,69 @@ const UIController = {
     },
 
     formatMessageBody(str) {
-        const escaped = this.escapeHTML(str);
-        return escaped.replace(/\n/g, '<br>');
+        // Escape HTML first to prevent XSS
+        let text = this.escapeHTML(str);
+
+        // 1. Code blocks (```code```)
+        text = text.replace(/```([\s\S]*?)```/g, (match, code) => {
+            const cleanedCode = code.trim();
+            return `<pre><code>${cleanedCode}</code></pre>`;
+        });
+
+        // 2. Inline code (`code`)
+        text = text.replace(/`([^`\n]+)`/g, '<code>$1</code>');
+
+        // 3. Bold text (**bold**)
+        text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+        // 4. Bullet lists
+        const lines = text.split('\n');
+        let inList = false;
+        const formattedLines = [];
+
+        for (let line of lines) {
+            const isPreOpen = line.includes('<pre>') || line.includes('</pre>') || line.includes('<code>') || line.includes('</code>');
+
+            if (!isPreOpen && (line.trim().startsWith('- ') || line.trim().startsWith('* ') || line.trim().startsWith('• '))) {
+                if (!inList) {
+                    formattedLines.push('<ul>');
+                    inList = true;
+                }
+                const content = line.trim().substring(2);
+                formattedLines.push(`<li>${content}</li>`);
+            } else {
+                if (inList && !isPreOpen) {
+                    formattedLines.push('</ul>');
+                    inList = false;
+                }
+                formattedLines.push(line);
+            }
+        }
+        if (inList) {
+            formattedLines.push('</ul>');
+        }
+
+        let result = formattedLines.join('\n');
+
+        // 5. Replace newlines with <br> except inside pre/code blocks
+        const finalLines = result.split('\n');
+        let inPre = false;
+        for (let i = 0; i < finalLines.length; i++) {
+            if (finalLines[i].includes('<pre>')) inPre = true;
+            if (finalLines[i].includes('</pre>')) {
+                inPre = false;
+                continue;
+            }
+            if (inPre) {
+                continue;
+            }
+            const isBlockElement = finalLines[i].startsWith('<ul>') || finalLines[i].startsWith('</ul>') || finalLines[i].startsWith('<li>') || finalLines[i].startsWith('</li>');
+            if (!isBlockElement && finalLines[i].trim() !== '') {
+                finalLines[i] = finalLines[i] + '<br>';
+            }
+        }
+
+        return finalLines.join('\n');
     }
 };
 
