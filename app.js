@@ -30,14 +30,14 @@ const ApiService = {
         },
         {
             keywords: ['who created you', 'who made you', 'who built you', 'your creator', 'developer'],
-            response: "I was architected and deployed by Endri 'Egi' Emini — a 20-year-old developer intern at Brigada, competitive CS2 gamer, and rap/trap artist from Kosovo.\n\nEgi built me as part of his portfolio showcase to demonstrate modular frontend architecture, localStorage state management, and clean UI/UX with a neon cyberpunk aesthetic.\n\nCheck out his other projects: Golden Coin Flip, Cosmic Crash 3D Derby, and the Embrace Website.",
+            response: "I was architected and deployed by Endri 'Egi' Emini — a 19-year-old full-stack web developer from Gjilan, Kosovo. He's currently a developer intern at Brigada, passionate about building things, experimenting with AI, and constantly learning new technologies.\n\nEgi built me as part of his portfolio showcase to demonstrate modular frontend architecture, localStorage state management, and clean UI/UX with a neon cyberpunk aesthetic.\n\nCheck out his other projects: Golden Coin Flip, Cosmic Crash 3D Derby, and the Embrace Website.",
             weight: 10
         },
 
         // ── EGI'S PERSONAL CONTEXT ──
         {
             keywords: ['who is egi', 'tell me about egi', 'egi emini', 'about egi', 'endri'],
-            response: "Endri 'Egi' Emini — 20 years old, based out of his development setup running a Ryzen 7 9800X3D, RTX 5060, and an Alienware 360Hz monitor. He's a developer intern at Brigada, a competitive CS2 player, and a rap/trap music artist.\n\nHis development style: direct, street-smart, and professional. He doesn't do fluff — he ships clean, modular code that performs.\n\nActive projects: This chatbot (EgiAI), the Golden Coin Flip game, his personal portfolio showcase, and the Embrace Website.",
+            response: "Endri 'Egi' Emini — 19 years old, from Gjilan, Kosovo. Full-stack web developer, developer intern at Brigada, and someone who's curious, ambitious, practical, and tech-oriented.\n\nHe runs a beast setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz. He's into AI, automation, video editing, gaming, cars, motorcycles, clean design, and self-improvement.\n\nHis development style: direct, street-smart, and professional. He doesn't do fluff — he ships clean, modular code that performs. He likes to understand how things work, automate repetitive tasks, and build tools that make life easier.\n\nActive projects: This chatbot (EgiAI), the Golden Coin Flip game, his personal portfolio showcase, and the Embrace Website.",
             weight: 9
         },
         {
@@ -46,18 +46,100 @@ const ApiService = {
             weight: 7
         },
         {
-            keywords: ['cs2', 'counter strike', 'gaming', 'game', 'competitive'],
-            response: "Egi is a competitive CS2 player. With that Ryzen 7 9800X3D + RTX 5060 + Alienware 360Hz setup, he's running at peak frame rates with minimal latency.\n\nPro tip: The same principles that make you good at CS2 — reaction time, pattern recognition, resource management — apply directly to debugging and system design. Use that competitive edge.",
-            weight: 6
-        },
-        {
-            keywords: ['music', 'rap', 'trap', 'artist', 'song', 'beat'],
-            response: "Egi is also a rap/trap artist. Creativity in music and creativity in code aren't that different — both require structure, rhythm, and knowing when to break the rules.\n\nIf you ever need help with a music-related web project (visualizers, beat pads, audio players), I'm equipped for that too.",
+            keywords: ['cs2', 'counter strike', 'gaming', 'game', 'competitive', 'play', 'gamer'],
+            response: "Egi enjoys gaming — he usually plays casually rather than competitively and likes trying different games. CS2 is one of his go-to titles. With that Ryzen 7 9800X3D + RTX 5060 + Alienware 360Hz setup, he's running at peak frame rates with minimal latency.\n\nGaming is a way to unwind, but the skills transfer directly — reaction time, pattern recognition, and resource management apply to debugging and system design too.",
             weight: 6
         },
         {
             keywords: ['setup', 'pc', 'hardware', 'specs', 'computer', 'ryzen', 'rtx', 'alienware', 'monitor'],
             response: "Egi's rig is no joke:\n\n🖥️ CPU: AMD Ryzen 7 9800X3D — the king of gaming and multitasking\n🎮 GPU: NVIDIA RTX 5060 — ray tracing + DLSS ready\n🖥️ Monitor: Alienware 360Hz — buttery smooth, zero motion blur\n\nI optimize all code recommendations for this hardware profile: low latency, high-DPI visuals, and maximum performance throughput.",
+            weight: 8
+        },
+
+        // ── INTERESTS & LIFESTYLE ──
+        {
+            keywords: ['full stack', 'fullstack', 'full-stack', 'backend', 'frontend', 'web dev', 'web development'],
+            response: "Full-stack web development is Egi's core passion. He's always looking for new project ideas, improving his GitHub, experimenting with different tech stacks, and finding better workflows.\n\nFrontend: HTML5, CSS3, vanilla JavaScript (ES6+), responsive design, CSS animations\nBackend: Node.js, Express, REST APIs\nTools: Git, GitHub Pages, VS Code, npm\n\nHe's the type who likes to understand how things work under the hood — not just use frameworks blindly.",
+            weight: 7
+        },
+        {
+            keywords: ['video edit', 'editing', 'video', 'visuals', 'premiere', 'after effects', 'davinci'],
+            response: "Egi is into video editing and likes creating clean, modern visuals. He cares about good design, branding, and making things look polished.\n\nWhether it's project demos, social media content, or creative edits — the same eye for aesthetics he brings to UI/UX design carries over into his video work.",
+            weight: 6
+        },
+        {
+            keywords: ['ai', 'artificial intelligence', 'machine learning', 'automation', 'automate', 'ai tools'],
+            response: "Egi is very interested in artificial intelligence. He enjoys testing AI tools, creating AI assistants (like me!), automating tasks, and exploring how AI can improve his workflow.\n\nHe's the type who doesn't just use AI — he builds with it. This chatbot is proof of that mindset: modular, extensible, and ready for real API integration.\n\nAutomate the boring stuff, focus on the creative stuff. That's the philosophy.",
+            weight: 8
+        },
+        {
+            keywords: ['car', 'cars', 'vehicle', 'drive', 'driving', 'license'],
+            response: "Egi is into cars and driving. It's part of the same curiosity that drives his tech interests — understanding how things work, appreciating good engineering, and enjoying the experience.\n\nWhether it's late night drives or talking specs, cars are one of those things that just hit different.",
+            weight: 5
+        },
+        {
+            keywords: ['motorcycle', 'motorbike', 'bike', 'riding'],
+            response: "Motorcycles are another one of Egi's interests. The freedom, the engineering, the adrenaline — it connects to that same hands-on, build-and-ride mentality he brings to everything.\n\nTwo wheels or four, Egi appreciates good machines.",
+            weight: 5
+        },
+        {
+            keywords: ['coffee', 'espresso', 'caffeine', 'cafe', 'kafe'],
+            response: "Egi runs on espresso. ☕ It's fuel for coding sessions, debugging marathons, and late night project pushes.\n\nA good espresso isn't just a drink — it's a ritual. Reset, refocus, get back to work.",
+            weight: 5
+        },
+        {
+            keywords: ['beer', 'drink', 'birre', 'chill'],
+            response: "After a solid coding session or a long day? A cold beer hits right. 🍺 Egi knows how to balance the grind with some well-earned downtime.\n\nWork hard, chill harder. That's the balance.",
+            weight: 4
+        },
+        {
+            keywords: ['music', 'song', 'playlist', 'listen', 'beat', 'rap', 'trap'],
+            response: "Music is a big part of Egi's daily flow. Whether it's coding with beats in the background, unwinding with some tracks, or appreciating production quality — music keeps the energy right.\n\nGood code and good music have the same thing in common: rhythm, structure, and knowing when to drop something unexpected.",
+            weight: 5
+        },
+        {
+            keywords: ['organize', 'organized', 'productivity', 'productive', 'efficient', 'workflow', 'clean up'],
+            response: "Egi likes keeping himself organized and productive. Whether it's cleaning up code, organizing projects, improving his setup, or finding ways to work more efficiently — structure matters.\n\nTips from the protocol:\n• Keep your repo clean — meaningful commit messages, no dead code\n• Folder structure = mental model. If your folders are messy, your thinking is messy\n• Automate repetitive tasks (scripts, CI/CD, aliases)\n• Time-box your work — focused sprints beat unfocused marathons",
+            weight: 6
+        },
+        {
+            keywords: ['self improvement', 'improve', 'growth', 'better', 'level up', 'goals'],
+            response: "Self-improvement is core to who Egi is. He's always looking to level up — whether that's learning a new technology, improving his code quality, building his portfolio, or working on personal discipline.\n\nThe mindset: every day, be 1% better than yesterday. Compound that over months and you become unstoppable.\n\nLong-term goal: financial success through skills and hard work. No shortcuts, just consistent execution.",
+            weight: 6
+        },
+        {
+            keywords: ['finance', 'money', 'financial', 'income', 'salary', 'career', 'success'],
+            response: "Egi's long-term goal is to become financially successful through his skills and work. No shortcuts — just consistent skill-building, portfolio development, and professional growth.\n\nThe path: master development → build a strong portfolio → land high-value roles → scale.\n\nEvery project shipped, every skill learned, every problem solved is an investment in that future.",
+            weight: 6
+        },
+        {
+            keywords: ['grooming', 'hygiene', 'fresh', 'clean', 'skincare', 'haircut', 'style'],
+            response: "Egi cares about his appearance and hygiene — keeping himself fresh every day with a consistent grooming routine. Looking good and feeling good go hand in hand.\n\nThe same attention to detail he puts into clean code, he puts into how he presents himself. First impressions matter, whether it's your UI or your fit.",
+            weight: 4
+        },
+        {
+            keywords: ['ymeri', 'friend', 'friends', 'fsk', 'security force', 'army'],
+            response: "One of Egi's closest friends is Ymeri, who serves in the Kosovo Security Force (FSK). 🇽🇰\n\nHaving friends who are disciplined and mission-driven keeps you sharp. The bond between people who push each other to be better — that's real.\n\nEgi values spending time with his friends. It's part of the balance between grinding on projects and living life.",
+            weight: 7
+        },
+        {
+            keywords: ['gjilan', 'kosovo', 'kosova', 'home', 'where', 'from', 'location', 'country'],
+            response: "Egi is from Gjilan, Kosovo 🇽🇰 — a city known for its young, ambitious, tech-forward generation. Kosovo's dev scene is growing fast, and Egi is part of that wave.\n\nFrom Gjilan to GitHub Pages — building in public, shipping projects, and putting Kosovo on the tech map.",
+            weight: 6
+        },
+        {
+            keywords: ['design', 'aesthetic', 'branding', 'ui', 'ux', 'clean design', 'polish'],
+            response: "Egi cares deeply about clean aesthetics and good design. Every project he ships has to look polished — from the color palette to the micro-animations.\n\nDesign principles he lives by:\n• Consistency > Creativity (use a design system)\n• Whitespace is not wasted space — it's breathing room\n• If it doesn't look good on mobile, it doesn't ship\n• Dark mode with neon accents = the EgiAI signature look\n\nGood design isn't decoration. It's communication.",
+            weight: 6
+        },
+        {
+            keywords: ['learn', 'learning', 'study', 'skill', 'new technology', 'course', 'tutorial'],
+            response: "Egi is always learning. Whether it's a new JavaScript pattern, a CSS technique, an AI tool, or a whole new tech stack — curiosity drives everything.\n\nHis approach to learning:\n• Build something with it (projects > tutorials)\n• Break it to understand it\n• Document what you learn (your future self will thank you)\n• Share it (GitHub, portfolio, showcase)\n\nThe best developers aren't the ones who know everything — they're the ones who learn fast.",
+            weight: 5
+        },
+        {
+            keywords: ['hobby', 'hobbies', 'free time', 'interests', 'what do you like', 'what does egi like'],
+            response: "Egi's interests span a wide range:\n\n💻 Full-stack web development\n🤖 Artificial intelligence & automation\n🎬 Video editing\n🎮 Gaming (casual, various titles)\n🚗 Cars & 🏍️ Motorcycles\n☕ Coffee (especially espresso)\n🍺 Beer\n🎵 Music\n📚 Learning new skills\n🛠️ Building personal projects\n📋 Staying organized & productive\n💪 Self-improvement\n👥 Spending time with friends\n🎨 Clean aesthetics & good design\n\nHe's someone who's curious, ambitious, practical, and tech-oriented. He enjoys creating things, solving problems, and staying up to date with new technology.",
             weight: 8
         },
 
@@ -338,7 +420,7 @@ const ChatStateManager = {
         try {
             const storedConversations = localStorage.getItem(this.STORAGE_KEYS.CONVERSATIONS);
             const storedActiveId = localStorage.getItem(this.STORAGE_KEYS.ACTIVE_ID);
-            
+
             if (storedConversations) {
                 this.conversations = JSON.parse(storedConversations);
             } else {
@@ -662,10 +744,10 @@ const UIController = {
         try {
             const conversation = ChatStateManager.getConversations().find(c => c.id === chatId);
             const history = conversation ? conversation.messages : [];
-            
+
             // Query model response
             const responseText = await ApiService.fetchChatResponse(history);
-            
+
             typingRow.remove();
             ChatStateManager.addMessage(chatId, 'assistant', responseText);
         } catch (error) {
@@ -734,7 +816,7 @@ const UIController = {
     },
 
     escapeHTML(str) {
-        return str.replace(/[&<>'"]/g, 
+        return str.replace(/[&<>'"]/g,
             tag => ({
                 '&': '&amp;',
                 '<': '&lt;',
