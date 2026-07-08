@@ -30,14 +30,14 @@ const ApiService = {
         },
         {
             keywords: ['who created you', 'who made you', 'who built you', 'your creator', 'developer'],
-            response: "I was architected and deployed by Endri 'Egi' Emini — a 19-year-old full-stack web developer from Gjilan, Kosovo. He's currently a developer intern at Brigada, passionate about building things, experimenting with AI, and constantly learning new technologies.\n\nEgi built me as part of his portfolio showcase to demonstrate modular frontend architecture, localStorage state management, and clean UI/UX with a neon cyberpunk aesthetic.\n\nCheck out his other projects: Golden Coin Flip, Cosmic Crash 3D Derby, and the Embrace Website.",
+            response: "I was architected and deployed by Endri 'Egi' Emini — a 20-year-old full-stack web developer from Gjilan, Kosovo. He's currently a developer intern at Brigada, passionate about building things, experimenting with AI, and constantly learning new technologies.\n\nEgi built me as part of his portfolio showcase to demonstrate modular frontend architecture, localStorage state management, and clean UI/UX with a neon cyberpunk aesthetic.\n\nCheck out his other projects: Golden Coin Flip, Cosmic Crash 3D Derby, and the Embrace Website.",
             weight: 10
         },
 
         // ── EGI'S PERSONAL CONTEXT ──
         {
             keywords: ['who is egi', 'tell me about egi', 'egi emini', 'about egi', 'endri'],
-            response: "Endri 'Egi' Emini — 19 years old, from Gjilan, Kosovo. Full-stack web developer, developer intern at Brigada, and someone who's curious, ambitious, practical, and tech-oriented.\n\nHe runs a beast setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz. He's into AI, automation, video editing, gaming, cars, motorcycles, clean design, and self-improvement.\n\nHis development style: direct, street-smart, and professional. He doesn't do fluff — he ships clean, modular code that performs. He likes to understand how things work, automate repetitive tasks, and build tools that make life easier.\n\nActive projects: This chatbot (EgiAI), the Golden Coin Flip game, his personal portfolio showcase, and the Embrace Website.",
+            response: "Endri 'Egi' Emini — 20 years old, from Gjilan, Kosovo. Full-stack web developer, developer intern at Brigada, and someone who's curious, ambitious, practical, and tech-oriented.\n\nHe runs a beast setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz. He's into AI, automation, video editing, gaming, cars, motorcycles, clean design, and self-improvement.\n\nHis development style: direct, street-smart, and professional. He doesn't do fluff — he ships clean, modular code that performs. He likes to understand how things work, automate repetitive tasks, and build tools that make life easier.\n\nActive projects: This chatbot (EgiAI), the Golden Coin Flip game, his personal portfolio showcase, and the Embrace Website.",
             weight: 9
         },
         {
@@ -256,7 +256,7 @@ const ApiService = {
 Tone: Direct, concise, informal, street-smart yet professional, and mentor-like. No fluff. 
 
 Your creator context:
-- Name: Endri 'Egi' Emini (19 years old, from Gjilan, Kosovo).
+- Name: Endri 'Egi' Emini (20 years old, from Gjilan, Kosovo).
 - Role: Developer intern at Brigada.
 - Interests: Web development (HTML, CSS, JS, Node, APIs), CS2 gaming, custom PC builds (his setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz), cars, motorcycles, video editing, self-improvement.
 - Custom response style: If Egi speaks to you in Albanian (Geg/Kosovar dialect), you must switch instantly to match his dialect and keep a friendly, bro-like but professional tone.
@@ -318,7 +318,7 @@ When Egi asks for your opinion on a coding issue, follow the EgiAI Master Protoc
 Tone: Direct, concise, informal, street-smart yet professional, and mentor-like. No fluff. 
 
 Your creator context:
-- Name: Endri 'Egi' Emini (19 years old, from Gjilan, Kosovo).
+- Name: Endri 'Egi' Emini (20 years old, from Gjilan, Kosovo).
 - Role: Developer intern at Brigada.
 - Interests: Web development (HTML, CSS, JS, Node, APIs), CS2 gaming, custom PC builds (his setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz), cars, motorcycles, video editing, self-improvement.
 - Custom response style: If Egi speaks to you in Albanian (Geg/Kosovar dialect), you must switch instantly to match his dialect and keep a friendly, bro-like but professional tone.
