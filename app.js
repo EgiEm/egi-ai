@@ -20,7 +20,7 @@ const ApiService = {
         // ── CORE IDENTITY ──
         {
             keywords: ['hello', 'hi', 'hey', 'yo', 'greetings', 'sup', 'whats up'],
-            response: "Yo Egi! What is our mission today? I'm locked in and ready to build. Drop me a task, a question, or a project — let's get it.",
+            response: "Yo! What is our mission today? I'm locked in and ready to build. Drop me a task, a question, or a project — let's get it.",
             weight: 1
         },
         {
@@ -36,9 +36,24 @@ const ApiService = {
 
         // ── EGI'S PERSONAL CONTEXT ──
         {
-            keywords: ['who is egi', 'tell me about egi', 'egi emini', 'about egi', 'endri'],
-            response: "Endri 'Egi' Emini — 20 years old, from Gjilan, Kosovo. Full-stack web developer, developer intern at Brigada, and someone who's curious, ambitious, practical, and tech-oriented.\n\nHe runs a beast setup: Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz. He's into AI, automation, video editing, gaming, cars, motorcycles, clean design, and self-improvement.\n\nHis development style: direct, street-smart, and professional. He doesn't do fluff — he ships clean, modular code that performs. He likes to understand how things work, automate repetitive tasks, and build tools that make life easier.\n\nActive projects: This chatbot (EgiAI), the Golden Coin Flip game, his personal portfolio showcase, and the Embrace Website.",
+            keywords: ['who is egi', 'tell me about egi', 'egi emini', 'about egi', 'endri', 'whats egi like', 'what is egi like'],
+            response: "Egi Emini is someone who genuinely loves figuring things out. He isn't satisfied with simply using technology — he wants to understand how it works, why it works, and how it can be improved. Whether it's programming, AI, computer hardware, or video editing, he naturally dives beneath the surface to learn the details.\n\nHe's ambitious, hates standing still, and is constantly working toward something bigger. He doesn't like feeling stagnant, and he's always looking for ways to improve his skills, his workflow, and himself. He's the kind of person who enjoys creating more than consuming, which is why he's drawn to building software, experimenting with AI, and turning ideas into real projects.\n\nHe runs a beast setup (Ryzen 7 9800X3D, RTX 5060, Alienware 360Hz) and has a strong eye for quality. Small details matter to him, whether it's getting the smoothest performance out of a PC, making a video look clean, or writing code that's efficient instead of just functional. He prefers precision over shortcuts and likes things to work the way they're supposed to.\n\nHis sense of humor is sarcastic, random, and very Gen Z. He can switch from discussing complex programming concepts to making a completely unrelated joke in the next sentence. He's easygoing, but when something captures his interest, he becomes deeply focused and can spend hours learning, building, or improving it.",
+            weight: 10
+        },
+        {
+            keywords: ['mindset', 'builder', 'philosophy', 'curiosity', 'curious'],
+            response: "Egi is the type of person who hates standing still. He naturally thinks as a builder: 'Some people consume, I want to create.' Whenever he sees something cool, his first reaction isn't 'that's awesome' — it's 'how does that work?'\n\nHe is deeply curious. Once a topic catches his interest, he will ask and learn anything about it. His interest ranges across programming, cars, AI, video codecs, networking, computer hardware, psychology, music, prompt engineering, algorithms, laws, history, life advice, and finance. He genuinely enjoys learning, solving problems, and understanding complex systems. He doesn't just want code that works; he wants to understand why it works, why it broke, how to optimize it, scale it, and automate it. He's naturally moving toward software engineering rather than simply writing scripts.",
             weight: 9
+        },
+        {
+            keywords: ['strengths', 'strength', 'skills', 'personality'],
+            response: "Here are Egi's main strengths:\n\n• **Curious & Technical:** Loves figuring things out and understands systems beneath the surface.\n• **Creative & Builder Mindset:** Hates standing still, prefers creating over consuming.\n• **Persistent & Independent:** Stays committed to solving difficult bugs and self-learning new stacks.\n• **Self-aware:** Comfortable admitting when he doesn't know something, which is rarer than people think.\n• **Detail-oriented:** Notices micro-performance drops (like a 1% low FPS stutter) and minor layout issues that others ignore.",
+            weight: 8
+        },
+        {
+            keywords: ['weaknesses', 'weakness', 'flaws', 'imperfections'],
+            response: "Nobody's perfect. Here's a look at Egi's challenges:\n\n• **Overthinking & Self-Doubt:** Sometimes overthinks decisions or doubts himself more than he should.\n• **Project Hopping:** Sometimes jumps between projects when a new interesting concept catches his attention.\n• **Impatience:** Gets impatient and frustrated when progress is slower than he'd like, or when software behaves incorrectly and wastes time.",
+            weight: 8
         },
         {
             keywords: ['brigada', 'internship', 'intern', 'work', 'company'],
@@ -46,36 +61,34 @@ const ApiService = {
             weight: 7
         },
         {
-            keywords: ['cs2', 'counter strike', 'gaming', 'game', 'competitive', 'play', 'gamer'],
-            response: "Egi enjoys gaming — he usually plays casually rather than competitively and likes trying different games. CS2 is one of his go-to titles. With that Ryzen 7 9800X3D + RTX 5060 + Alienware 360Hz setup, he's running at peak frame rates with minimal latency.\n\nGaming is a way to unwind, but the skills transfer directly — reaction time, pattern recognition, and resource management apply to debugging and system design too.",
-            weight: 6
-        },
-        {
-            keywords: ['setup', 'pc', 'hardware', 'specs', 'computer', 'ryzen', 'rtx', 'alienware', 'monitor'],
-            response: "Egi's rig is no joke:\n\n🖥️ CPU: AMD Ryzen 7 9800X3D — the king of gaming and multitasking\n🎮 GPU: NVIDIA RTX 5060 — ray tracing + DLSS ready\n🖥️ Monitor: Alienware 360Hz — buttery smooth, zero motion blur\n\nI optimize all code recommendations for this hardware profile: low latency, high-DPI visuals, and maximum performance throughput.",
+            keywords: ['gaming', 'game', 'competitive', 'cs2', 'counter strike', 'fps', 'latency', 'input delay'],
+            response: "Egi plays competitive games (like CS2) and is obsessed with optimization. He doesn't just play casually — he cares deeply about maximum FPS, low frame times, minimal input delay/latency, mouse feel, and 1% low frame pacings. He's the type of gamer who notices a 1% low FPS stutter instantly.",
             weight: 8
         },
-
-        // ── INTERESTS & LIFESTYLE ──
         {
-            keywords: ['full stack', 'fullstack', 'full-stack', 'backend', 'frontend', 'web dev', 'web development'],
-            response: "Full-stack web development is Egi's core passion. He's always looking for new project ideas, improving his GitHub, experimenting with different tech stacks, and finding better workflows.\n\nFrontend: HTML5, CSS3, vanilla JavaScript (ES6+), responsive design, CSS animations\nBackend: Node.js, Express, REST APIs\nTools: Git, GitHub Pages, VS Code, npm\n\nHe's the type who likes to understand how things work under the hood — not just use frameworks blindly.",
+            keywords: ['setup', 'pc', 'hardware', 'specs', 'computer', 'ryzen', 'rtx', 'alienware', 'monitor', 'cpu', 'bios', 'ram timings', 'cooling'],
+            response: "Egi's rig is optimized for zero latency and peak throughput:\n\n🖥️ **CPU:** AMD Ryzen 7 9800X3D — the king of gaming and multitasking\n🎮 **GPU:** NVIDIA RTX 5060 — ray tracing & DLSS ready\n🖥️ **Monitor:** Alienware 360Hz — buttery smooth, zero motion blur\n\nHe genuinely enjoys computer hardware. Not just gaming PCs, but everything: CPU architecture, cooling efficiency, motherboards, BIOS, RAM timings, GPU utilization, frame pacing, and power supply efficiency.",
+            weight: 8
+        },
+        {
+            keywords: ['full stack', 'fullstack', 'full-stack', 'backend', 'frontend', 'web dev', 'web development', 'software engineering'],
+            response: "Full-stack web development and software engineering are Egi's core passions. He prefers understanding how things work under the hood over blindly copying frameworks.\n\n• **Frontend:** HTML5, CSS3, vanilla JavaScript (ES6+), glassmorphic design, CSS animations.\n• **Backend:** Node.js, Express, REST APIs, databases.\n• **Goal:** Moving beyond simple scripting toward true software engineering: optimizing, scaling, and automating complex applications.",
             weight: 7
         },
         {
-            keywords: ['video edit', 'editing', 'video', 'visuals', 'premiere', 'after effects', 'davinci'],
-            response: "Egi is into video editing and likes creating clean, modern visuals. He cares about good design, branding, and making things look polished.\n\nWhether it's project demos, social media content, or creative edits — the same eye for aesthetics he brings to UI/UX design carries over into his video work.",
-            weight: 6
+            keywords: ['video edit', 'editing', 'video', 'visuals', 'premiere', 'after effects', 'davinci', 'vegas', 'obs', 'bitrate', 'codecs', 'tiktok exports'],
+            response: "Egi enjoys video editing and streaming, with a focus on making visuals look exceptionally clean. He works with OBS Studio, Vegas Pro, and custom TikTok exports. He focuses on details most people ignore, like bitrates, rendering codecs, audio channels, and export quality.",
+            weight: 7
         },
         {
-            keywords: ['ai', 'artificial intelligence', 'machine learning', 'automation', 'automate', 'ai tools'],
-            response: "Egi is very interested in artificial intelligence. He enjoys testing AI tools, creating AI assistants (like me!), automating tasks, and exploring how AI can improve his workflow.\n\nHe's the type who doesn't just use AI — he builds with it. This chatbot is proof of that mindset: modular, extensible, and ready for real API integration.\n\nAutomate the boring stuff, focus on the creative stuff. That's the philosophy.",
+            keywords: ['ai', 'artificial intelligence', 'machine learning', 'automation', 'automate', 'ai tools', 'prompt engineering'],
+            response: "Egi is heavily invested in AI, automation, and prompt engineering. He loves testing new AI tools, scripting automations to bypass repetitive tasks, and building assistants (like me!). His motto: automate the boring stuff, focus on creating value.",
             weight: 8
         },
         {
-            keywords: ['car', 'cars', 'vehicle', 'drive', 'driving', 'license'],
-            response: "Egi is into cars and driving. It's part of the same curiosity that drives his tech interests — understanding how things work, appreciating good engineering, and enjoying the experience.\n\nWhether it's late night drives or talking specs, cars are one of those things that just hit different.",
-            weight: 5
+            keywords: ['car', 'cars', 'vehicle', 'drive', 'driving', 'cruise', 'night drives'],
+            response: "Driving is pure relaxation for Egi, not just transport. He loves late-night drives, cruising with no rush, music playing, a fresh espresso, and just unwinding on the road.",
+            weight: 8
         },
         {
             keywords: ['motorcycle', 'motorbike', 'bike', 'riding'],
@@ -103,13 +116,13 @@ const ApiService = {
             weight: 6
         },
         {
-            keywords: ['grooming', 'hygiene', 'fresh', 'clean', 'skincare', 'haircut', 'style'],
-            response: "Egi cares about his appearance and hygiene — keeping himself fresh every day with a consistent grooming routine. Looking good and feeling good go hand in hand.\n\nThe same attention to detail he puts into clean code, he puts into how he presents himself. First impressions matter, whether it's your UI or your fit.",
-            weight: 4
+            keywords: ['grooming', 'hygiene', 'fresh', 'clean', 'skincare', 'haircut', 'style', 'perfume', 'clothes'],
+            response: "Egi cares about taking care of himself. He maintains a consistent daily routine for hair, skincare, perfume, and clean clothes. Looking fresh makes him feel better and ready to perform, rather than just doing it to impress others. Clean code, clean look.",
+            weight: 6
         },
         {
-            keywords: ['ymeri', 'friend', 'friends', 'fsk', 'security force', 'army'],
-            response: "One of Egi's closest friends is Ymeri, who serves in the Kosovo Security Force (FSK). 🇽🇰\n\nHaving friends who are disciplined and mission-driven keeps you sharp. The bond between people who push each other to be better — that's real.\n\nEgi values spending time with his friends. It's part of the balance between grinding on projects and living life.",
+            keywords: ['ymeri', 'friend', 'friends', 'fsk', 'security force', 'army', 'loyalty', 'circle'],
+            response: "Egi values loyalty in friendships above all. He's not interested in having hundreds of casual acquaintances; he prefers a tight-knit circle of a few real, loyal friends. One of his closest friends is Ymeri, who serves in the Kosovo Security Force (FSK). 🇽🇰",
             weight: 7
         },
         {
@@ -123,13 +136,13 @@ const ApiService = {
             weight: 6
         },
         {
-            keywords: ['learn', 'learning', 'study', 'skill', 'new technology', 'course', 'tutorial'],
-            response: "Egi is always learning. Whether it's a new JavaScript pattern, a CSS technique, an AI tool, or a whole new tech stack — curiosity drives everything.\n\nHis approach to learning:\n• Build something with it (projects > tutorials)\n• Break it to understand it\n• Document what you learn (your future self will thank you)\n• Share it (GitHub, portfolio, showcase)\n\nThe best developers aren't the ones who know everything — they're the ones who learn fast.",
-            weight: 5
+            keywords: ['learn', 'learning', 'study', 'skill', 'new technology', 'course', 'tutorial', 'history', 'psychology', 'laws', 'video codecs', 'networking', 'prompt engineering'],
+            response: "Egi genuinely enjoys learning new things. Once a topic catches his interest, he will ask anything about it: Programming, Cars, AI, Video codecs, Networking, Computer hardware, Psychology, Music, Prompt engineering, Algorithms, Laws, History, Life advice, and Finance.\n\nHe doesn't just want code that works. He wants to understand why it works, why it broke, how to optimize it, how to scale it, and how to automate it.",
+            weight: 7
         },
         {
-            keywords: ['hobby', 'hobbies', 'free time', 'interests', 'what do you like', 'what does egi like'],
-            response: "Egi's interests span a wide range:\n\n💻 Full-stack web development\n🤖 Artificial intelligence & automation\n🎬 Video editing\n🎮 Gaming (casual, various titles)\n🚗 Cars & 🏍️ Motorcycles\n☕ Coffee (especially espresso)\n🍺 Beer\n🎵 Music\n📚 Learning new skills\n🛠️ Building personal projects\n📋 Staying organized & productive\n💪 Self-improvement\n👥 Spending time with friends\n🎨 Clean aesthetics & good design\n\nHe's someone who's curious, ambitious, practical, and tech-oriented. He enjoys creating things, solving problems, and staying up to date with new technology.",
+            keywords: ['hobby', 'hobbies', 'free time', 'interests', 'what do you like', 'what does egi like', 'music', 'genres', 'rap', 'trap', 'hip-hop', 'afro house'],
+            response: "Egi has a wide, active set of interests:\n\n• **Engineering:** Full-stack development, software architecture, automation scripts, computer hardware (BIOS, RAM timings, CPU design).\n• **Creation:** Video editing (OBS, Vegas Pro, TikTok exports), building AI assistants, prompt engineering.\n• **Gaming:** Competitive titles, optimized down to input delay, low frame times, and mouse feel.\n• **Unwinding:** Night drives, cruising with music on, grabbing an espresso.\n• **Music:** Rap, Trap, Hip-Hop, and Afro House are always playing around him.\n• **Self Care:** Self-improvement goals, personal grooming, hair and skincare.\n• **Social:** Spending time with a close circle of loyal friends.",
             weight: 8
         },
 
@@ -579,7 +592,7 @@ const UIController = {
         this.menuToggleBtn = document.getElementById('menu-toggle-btn');
         this.closeSidebarBtn = document.getElementById('close-sidebar-btn');
         this.sidebarOverlay = document.getElementById('sidebar-overlay');
-        
+
         // Cache Settings selectors
         this.settingsBtn = document.getElementById('settings-btn');
         this.settingsModal = document.getElementById('settings-modal');
