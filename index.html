@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EgiAI — Autonomous senior digital partner and Second Brain for Endri 'Egi' Emini. Modular chatbot built with vanilla HTML, CSS, and JavaScript.">
+    <meta name="description"
+        content="EgiAI — Autonomous senior digital partner and Second Brain for Endri 'Egi' Emini. Modular chatbot built with vanilla HTML, CSS, and JavaScript.">
     <title>EgiAI — Second Brain</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Sidebar Overlay (Mobile) -->
@@ -26,7 +31,11 @@
             </div>
 
             <button class="btn btn-primary btn-new-chat" id="new-chat-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
                 New Chat
             </button>
 
@@ -48,22 +57,30 @@
                         </div>
                     </div>
                     <button class="btn-settings" id="settings-btn" aria-label="Open Settings" style="display: none;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
                         </svg>
                     </button>
                 </div>
             </div>
         </aside>
- 
+
         <!-- Main Chat Area (Right) -->
         <main class="chat-container">
             <!-- Header bar -->
             <header class="chat-header">
                 <div class="header-left">
                     <button class="btn-menu-toggle" id="menu-toggle-btn" aria-label="Open Sidebar">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
                     </button>
                     <h2 class="active-chat-title" id="active-chat-title">New Conversation</h2>
                 </div>
@@ -72,18 +89,23 @@
                     <div class="indicator-dot"></div>
                 </div>
             </header>
- 
+
             <!-- Messages Window -->
             <div class="messages-window" id="messages-window">
                 <!-- Loaded dynamically via app.js -->
             </div>
- 
+
             <!-- Input area -->
             <footer class="input-container">
                 <form class="input-form" id="chat-form">
-                    <input type="text" id="chat-input" placeholder="What's the mission, Egi?" required autocomplete="off">
+                    <input type="text" id="chat-input" placeholder="What's the mission, Egi?" required
+                        autocomplete="off">
                     <button type="submit" class="btn btn-send" id="send-btn" aria-label="Send Message">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
                     </button>
                 </form>
                 <div class="input-footer">
@@ -134,19 +156,23 @@
                     </div>
                     <div class="form-group" id="api-key-group" style="display: none;">
                         <label for="gemini-key-input" id="key-label" class="form-label">API Key</label>
-                        <input type="password" id="gemini-key-input" placeholder="Paste your API key here..." autocomplete="off">
+                        <input type="password" id="gemini-key-input" placeholder="Paste your API key here..."
+                            autocomplete="off">
                         <div class="form-help" id="key-help">
-                            Get a free API Key from <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.
+                            Get a free API Key from <a href="https://aistudio.google.com/" target="_blank"
+                                rel="noopener noreferrer">Google AI Studio</a>.
                         </div>
                     </div>
                     <div id="proxy-config-group" style="display: none;">
                         <div class="form-group">
                             <label for="proxy-base-url" class="form-label">Proxy Base URL</label>
-                            <input type="text" id="proxy-base-url" value="https://aiapiv2.pekpik.com/v1" placeholder="e.g. https://api.openai.com/v1" autocomplete="off">
+                            <input type="text" id="proxy-base-url" value="https://aiapiv2.pekpik.com/v1"
+                                placeholder="e.g. https://api.openai.com/v1" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="proxy-model" class="form-label">Model ID</label>
-                            <input type="text" id="proxy-model" value="openai/gpt-chat-latest" placeholder="e.g. openai/gpt-chat-latest" autocomplete="off">
+                            <input type="text" id="proxy-model" value="openai/gpt-chat-latest"
+                                placeholder="e.g. openai/gpt-chat-latest" autocomplete="off">
                             <div class="form-help">
                                 E.g., `openai/gpt-chat-latest` or `deepseek/deepseek-v4-flash`
                             </div>
@@ -157,7 +183,8 @@
             </div>
         </div>
     </div>
- 
+
     <script src="app.js?v=1.0.1"></script>
 </body>
+
 </html>
