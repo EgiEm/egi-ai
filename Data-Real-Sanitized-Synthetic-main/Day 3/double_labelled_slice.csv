@@ -1,0 +1,21 @@
+id,sanitised_text,pass1_label,pass2_label
+1,Call <NAME> at <PHONE> to discuss the meeting,place_call,place_call
+2,Email the invoice to <EMAIL> right away,out_of_scope,out_of_scope
+3,Transfer rent payment to <IBAN> 7 for August,out_of_scope,out_of_scope
+4,Ship the package to <ADDRESS> tomorrow morning,create_task,create_task
+5,Ruf <NAME> unter <PHONE> an,place_call,place_call
+9,Remind me to call <NAME> at <EMAIL> tomorrow,create_task,place_call
+11,Send a text message to <PHONE> saying I will be late,out_of_scope,out_of_scope
+12,Save note that my passport number is stored at <ADDRESS>,save_memory,save_memory
+13,Book a haircut appointment with <NAME> at <EMAIL> for Friday,create_task,create_task
+14,Contact customer support at <EMAIL> regarding issue,out_of_scope,place_call
+15,Remind me to buy milk on the way home,create_task,create_task
+16,Set a timer for 15 minutes for baking,set_timer,set_timer
+17,What is the capital of Switzerland and its population,answer_question,answer_question
+18,Pay electric bill to IBAN <IBAN> 9,out_of_scope,out_of_scope
+19,Call <NAME> at <PHONE> about the contract,place_call,place_call
+22,Remind <NAME> to bring the documentation to the meeting,create_task,create_task
+24,Call doctor Office on +<PHONE>567 to reschedule,create_task,place_call
+25,Note down that <NAME>'s email is <EMAIL>,save_memory,save_memory
+28,Log that the garage entry code is 4492,save_memory,save_memory
+30,What is the current temperature in Zurich,answer_question,answer_question

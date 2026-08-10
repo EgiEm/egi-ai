@@ -1,0 +1,31 @@
+id,sanitised_text,intent,language,redactions_count,verify_clean,comment
+1,Call <NAME> at <PHONE> to discuss the meeting,place_call,en,2,True,
+2,Email the invoice to <EMAIL> right away,deliver_message,en,1,True,
+3,Transfer rent payment to <IBAN> 7 for August,finance_summary,en,1,True,
+4,Ship the package to <ADDRESS> tomorrow morning,create_task,en,1,True,
+5,Ruf <NAME> unter <PHONE> an,place_call,de,2,True,# = call Sarah at +41 79 555 01 42
+6,Envoie la facture à <EMAIL> s'il te plaît,deliver_message,fr,1,True,# = send the invoice to anna.muller@oxodin.ch please
+7,Llama a <NAME> al <PHONE> para confirmar la cita,place_call,es,2,True,# = call Carlos at +34 612 345 678 to confirm appointment
+8,Overnight delivery to <ADDRESS>,create_task,de,1,True,"# = overnight delivery to Hauptstrasse 45, 3000 Bern"
+9,Remind me to call <NAME> at <EMAIL> tomorrow,create_task,en,2,True,
+10,Please wire 500 CHF to account <IBAN> 9,finance_summary,en,1,True,
+11,Send a text message to <PHONE> saying I will be late,deliver_message,en,1,True,
+12,Save note that my passport number is stored at <ADDRESS>,save_memory,en,1,True,
+13,Book a haircut appointment with <NAME> at <EMAIL> for Friday,create_task,en,2,True,
+14,Contact customer support at <EMAIL> regarding issue,place_call,en,1,True,
+15,Remind me to buy milk on the way home,create_task,en,0,True,
+16,Set a timer for 15 minutes for baking,set_timer,en,0,True,
+17,What is the capital of Switzerland and its population,answer_question,en,0,True,
+18,Pay electric bill to IBAN <IBAN> 9,finance_summary,en,1,True,
+19,Call <NAME> at <PHONE> about the contract,place_call,en,2,True,
+20,Send email to <EMAIL> with my resume attached,deliver_message,en,1,True,
+21,Deliver groceries to <ADDRESS>,create_task,fr,1,True,"# = deliver groceries to Rue du Rhône 42, 1204 Genève"
+22,Remind <NAME> to bring the documentation to the meeting,create_task,en,1,True,
+23,Transfer 1200 EUR to <IBAN>,finance_summary,es,1,True,# = transfer 1200 EUR to account ES91 2100 0418 4502 0005 1324
+24,Call doctor Office on +<PHONE>567 to reschedule,place_call,de,1,True,# = call doctor office on +49 30 1234567 to reschedule
+25,Note down that <NAME>'s email is <EMAIL>,save_memory,de,2,True,# = note down that Dr. Weber's email is dr.weber@praxis.de
+26,Where is the nearest pharmacy open right now,answer_question,en,0,True,
+27,Schedule a call with <NAME> at <PHONE> for Monday,create_task,de,2,True,# = schedule a call with Marcus at +41 44 211 11 11 for Monday
+28,Log that the garage entry code is 4492,save_memory,en,0,True,
+29,Tell <NAME> to call me back as soon as possible,deliver_message,en,1,True,
+30,What is the current temperature in Zurich,answer_question,en,0,True,

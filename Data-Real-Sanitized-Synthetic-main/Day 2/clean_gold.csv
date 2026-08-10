@@ -1,0 +1,35 @@
+id,sanitised_text,normalised_key,guideline_label,clause_applied,language
+1,Call <NAME> at <PHONE> to discuss the meeting,call <name> at <phone> to discuss the meeting,place_call,Direct match (place_call),en
+2,Email the invoice to <EMAIL> right away,email the invoice to <email> right away,out_of_scope,Clause 2.6 (deliver_message -> out_of_scope),en
+3,Transfer rent payment to <IBAN> 7 for August,transfer rent payment to <iban> 7 for august,out_of_scope,Clause 2.6 (finance_summary -> out_of_scope),en
+4,Ship the package to <ADDRESS> tomorrow morning,ship the package to <address> tomorrow morning,create_task,Direct match (create_task),en
+5,Ruf <NAME> unter <PHONE> an,ruf <name> unter <phone> an,place_call,Direct match (place_call),de
+6,Envoie la facture à <EMAIL> s'il te plaît,envoie la facture à <email> s'il te plaît,out_of_scope,Clause 2.6 (deliver_message -> out_of_scope),fr
+7,Llama a <NAME> al <PHONE> para confirmar la cita,llama a <name> al <phone> para confirmar la cita,place_call,Direct match (place_call),es
+8,Overnight delivery to <ADDRESS>,overnight delivery to <address,create_task,Direct match (create_task),de
+9,Remind me to call <NAME> at <EMAIL> tomorrow,remind me to call <name> at <email> tomorrow,create_task,Clause 2.1 Tie-Breaker (Task vs Call),en
+10,Please wire 500 CHF to account <IBAN> 9,please wire 500 chf to account <iban> 9,out_of_scope,Clause 2.6 (finance_summary -> out_of_scope),en
+11,Send a text message to <PHONE> saying I will be late,send a text message to <phone> saying i will be late,out_of_scope,Clause 2.6 Tie-Breaker (Unsupported channel),en
+12,Save note that my passport number is stored at <ADDRESS>,save note that my passport number is stored at <address,save_memory,Direct match (save_memory),en
+13,Book a haircut appointment with <NAME> at <EMAIL> for Friday,book a haircut appointment with <name> at <email> for friday,create_task,Direct match (create_task),en
+14,Contact customer support at <EMAIL> regarding issue,contact customer support at <email> regarding issue,place_call,Direct match (place_call),en
+15,Remind me to buy milk on the way home,remind me to buy milk on the way home,create_task,Direct match (create_task),en
+16,Set a timer for 15 minutes for baking,set a timer for 15 minutes for baking,set_timer,Direct match (set_timer),en
+17,What is the capital of Switzerland and its population,what is the capital of switzerland and its population,answer_question,Direct match (answer_question),en
+18,Pay electric bill to IBAN <IBAN> 9,pay electric bill to iban <iban> 9,out_of_scope,Clause 2.6 (finance_summary -> out_of_scope),en
+19,Call <NAME> at <PHONE> about the contract,call <name> at <phone> about the contract,place_call,Direct match (place_call),en
+20,Send email to <EMAIL> with my resume attached,send email to <email> with my resume attached,out_of_scope,Clause 2.6 (deliver_message -> out_of_scope),en
+21,Deliver groceries to <ADDRESS>,deliver groceries to <address,create_task,Direct match (create_task),fr
+22,Remind <NAME> to bring the documentation to the meeting,remind <name> to bring the documentation to the meeting,create_task,Direct match (create_task),en
+23,Transfer 1200 EUR to <IBAN>,transfer 1200 eur to <iban,out_of_scope,Clause 2.6 (finance_summary -> out_of_scope),es
+24,Call doctor Office on +<PHONE>567 to reschedule,call doctor office on +<phone>567 to reschedule,create_task,Clause 2.1 (Scheduled Call -> Task),de
+25,Note down that <NAME>'s email is <EMAIL>,note down that <name>'s email is <email,save_memory,Direct match (save_memory),de
+26,Where is the nearest pharmacy open right now,where is the nearest pharmacy open right now,answer_question,Direct match (answer_question),en
+27,Schedule a call with <NAME> at <PHONE> for Monday,schedule a call with <name> at <phone> for monday,create_task,Direct match (create_task),de
+28,Log that the garage entry code is 4492,log that the garage entry code is 4492,save_memory,Direct match (save_memory),en
+29,Tell <NAME> to call me back as soon as possible,tell <name> to call me back as soon as possible,out_of_scope,Clause 2.6 (deliver_message -> out_of_scope),en
+30,What is the current temperature in Zurich,what is the current temperature in zurich,answer_question,Direct match (answer_question),en
+31,Call <NAME> at <PHONE>.,call <name> at <phone,place_call,Direct match (place_call),en
+34,remind me to call the dentist,remind me to call the dentist,create_task,Clause 2.1 Tie-Breaker (Task vs Call),en
+35,text mom I'm running late,text mom i'm running late,out_of_scope,Clause 2.6 Tie-Breaker (Unsupported channel),en
+36,in 10 minutes remind me to stir the soup,in 10 minutes remind me to stir the soup,create_task,Clause 2.5 Tie-Breaker (Task vs Timer),en

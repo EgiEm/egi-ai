@@ -1,0 +1,32 @@
+id,text,label,lang,verdict
+syn-01,"remember my locker code is 4417",save_memory,en,kept
+syn-02,"save that my passport expires in March",save_memory,en,kept
+syn-03,"note down that the wifi password is sunflower",save_memory,en,kept
+syn-05,"log that the garage entry code is 4492",save_memory,en,kept
+syn-06,"save my flight confirmation number AB123",save_memory,en,kept
+syn-07,"merk dir, ich parke auf Ebene 3 (= remember I parked on level 3)",save_memory,de,kept
+syn-08,"Erinnere mich an die PIN 9921 (= remember my PIN 9921)",save_memory,de,kept
+syn-09,"garde en mémoire que mon code est 1234 (= keep in memory that my code is 1234)",save_memory,fr,kept
+syn-12,"remember that Dr Weber's office is on 4th floor",save_memory,en,kept
+syn-13,"store my passport in the drawer",save_memory,en,kept
+syn-14,"remember my dog's medication is 2 pills daily",save_memory,en,kept
+syn-15,"guarda en memoria que la clave es 8877 (= save in memory key is 8877)",save_memory,es,kept
+syn-16,"save that my license plate is ZH 49201",save_memory,en,kept
+syn-17,"note that the gate code is 9012",save_memory,en,kept
+syn-21,"keep in mind my blood type is O positive",save_memory,en,kept
+syn-22,"save my doctor's phone number as +41442111111",save_memory,en,kept
+syn-23,"set a timer for 15 minutes",set_timer,en,kept
+syn-24,"timer 10 minutes",set_timer,en,kept
+syn-26,"set a 45 minute countdown for pizza",set_timer,en,kept
+syn-27,"stoppuhr auf 5 minuten stellen (= set stopwatch to 5 minutes)",set_timer,de,kept
+syn-28,"stelle einen timer für 20 minuten (= set a timer for 20 minutes)",set_timer,de,kept
+syn-29,"met un minuteur de 10 minutes (= set a 10 minute timer)",set_timer,fr,kept
+syn-30,"pon un temporizador de 30 minutos (= set a 30 minute timer)",set_timer,es,kept
+syn-33,"timer 25 minutes for baking",set_timer,en,kept
+syn-34,"start a 5 minute timer",set_timer,en,kept
+syn-35,"set timer for 1 hour",set_timer,en,kept
+syn-38,"set a timer for 8 minutes for eggs",set_timer,en,kept
+syn-39,"countdown 12 minutes",set_timer,en,kept
+syn-41,"set a 30 minute timer",set_timer,en,kept
+syn-43,"timer for 15 minutes",set_timer,en,kept
+syn-44,"start a countdown of 3 minutes",set_timer,en,kept
