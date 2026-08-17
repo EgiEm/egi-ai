@@ -1,82 +1,106 @@
-# 🧠 EgiAI — Second Brain
+# Brigada — Developer Internship Portfolio
 
-EgiAI is an autonomous digital partner and personal "Second Brain" built entirely from scratch with **pure vanilla HTML5, CSS3, and JavaScript (ES6+)**. No external frameworks, heavy bundlers, or third-party libraries.
-
-It serves as both a portfolio showcase and an active productivity workspace designed for **Endri "Egi" Emini**.
-
----
-
-## 🚀 Key Features
-
-* **⚡ Three Brain Modes**:
-  * **Simulated Local Brain**: A zero-latency local intelligence mode that matches user query intents against a custom-weighted knowledge base indexing Egi's portfolio projects, hardware setup, coding philosophy, and lifestyle context.
-  * **Google Gemini 2.0 Flash**: Direct, official integration using your API key from Google AI Studio.
-  * **Free LLM Proxy**: Connects to OpenAI/Gemini compatible API proxies using a token.
-* **💾 LocalStorage Chat History Persistence**: Auto-saves conversations, recent threads, and configuration states locally in the browser so workspace data is never lost.
-* **📱 Responsive Cyberpunk Glassmorphism UI**:
-  * Curated dark theme using custom HSL colors and violet-cyan neon accents.
-  * Sleek floating sidebars and backdrop blur properties (`backdrop-filter: blur(8px)`).
-  * Responsive, screen-locked flex containers with precise wrapping calculations to eliminate horizontal overflows on all mobile viewports.
-* **📝 Rich Message Formatting**: Custom in-house parser that transforms Markdown syntax (code blocks, inline code, lists, bold text, newlines) into clean, semantic HTML on-the-fly.
+> **Endri "Egi" Emini** · Brigada Developer Internship (2026)  
+> Full-stack web development, AI/ML engineering, and systems thinking — built from scratch.
 
 ---
 
-## 🛠️ Technology Stack
+## About
 
-* **Frontend Engine:** Vanilla ES6 JavaScript (Object Literal Module Pattern)
-* **Styling System:** Vanilla CSS Custom Variables (Design Tokens)
-* **API Integration:** Native Fetch API with asynchronous state streams
-* **Deployment:** Hosted directly on **GitHub Pages**
+This repository is the complete portfolio from my Brigada developer internship. It contains every project, experiment, and capstone deliverable built across eight weeks of intensive work — from vanilla JavaScript web apps to fine-tuned AI intent routers that beat a 14-billion-parameter production model.
 
----
-
-## 📁 Architecture & File Structure
-
-The frontend application splits its logic into three dedicated modules to maintain a clean separation of concerns:
-
-```
-egi-ai/
-├── index.html          — Cyberpunk DOM layouts, modals, and templates
-├── style.css           — Theme variables, glassmorphism layouts, and mobile queries
-└── app.js              — Core logic structured into:
-    ├── ApiService      — Evaluates local knowledge weights & hits AI endpoints
-    ├── ChatStateManager— Manages localStorage saves, chat histories & active threads
-    └── UIController    — Binds DOM events, handles settings, and controls formatting
-```
-
-### Dynamic Content Flow:
-```mermaid
-graph TD
-    A[User Input] --> B[UIController]
-    B --> C{Active Brain Mode?}
-    C -->|Simulated| D[ApiService: Evaluate Local Knowledge Weights]
-    C -->|Gemini / Proxy| E[ApiService: Query Live Fetch Endpoint]
-    D --> F[ChatStateManager: Save Message]
-    E --> F
-    F --> G[UIController: Render Message Bubble]
-```
+Every project here is built to be **read, run, and understood** — not just working code, but documented engineering with honest evaluations, real measurements, and named limitations.
 
 ---
 
-## ⚙️ Setup & Customization
+## Capstone: Build Your Own AI Router
 
-### Local Execution:
-No installation, compilations, or dependency steps required. Simply serve the workspace or double-click to run:
-1. Open the project root.
-2. Serve via a lightweight HTTP server (e.g., `npx serve` or Live Server extension).
-3. Open `http://localhost:3000` or the served directory port.
+> **The flagship project.** Fine-tuned a small, fast intent router that beats OXODIN's production Qwen3-14B-AWQ model at 82.9x the speed while matching its accuracy.
 
-### Adding Custom Knowledge Base Entries:
-Open [app.js](app.js) and append entries to the `KNOWLEDGE_BASE` array inside the `ApiService` block:
-```javascript
-{
-    keywords: ['your', 'keywords', 'here'],
-    response: "Your custom simulated bot response.",
-    weight: 5 // Higher weight wins priority conflicts
-}
-```
+**Final Verdict:** `CONTRACT: PASS — 82.9x faster, accuracy within margin`
+
+| Model | Latency (p50) | Speedup | Golden Accuracy | Verdict |
+| :--- | :---: | :---: | :---: | :---: |
+| Qwen3-14B-AWQ (baseline) | 3,400 ms | 1.0x | 85.0% | BASELINE |
+| SetFit | 265 ms | 12.8x | 83.3% | PASS |
+| Distilled Student | 26 ms | 129.9x | 91.7% | PASS |
+| **QLoRA Fine-tune** | **41 ms** | **82.9x** | **91.7%** | **PASS** |
+
+The capstone includes a structured eval report, machine-readable scorecard, live interactive demo, and a six-beat presentation — the full shipped bundle.
+
+**[View the full capstone →](Capstone%20Train%2C%20Beat%20the%2014B%20%26%20Ship/)**
 
 ---
 
-## 🚀 Live Demo
-Visit the live, deployed chatbot workspace at: **[egiem.github.io/egi-ai/](https://egiem.github.io/egi-ai/)**
+## Projects
+
+### AI & Machine Learning
+
+| Project | Description |
+| :--- | :--- |
+| **[Capstone: Train, Beat the 14B & Ship](Capstone%20Train%2C%20Beat%20the%2014B%20%26%20Ship/)** | Week 8 capstone — SetFit, distillation, QLoRA fine-tuning, and the full shipped eval bundle |
+| **[AI Router](ai-router/)** | Production-grade PHP intent router with shadow mode logging, structured outputs, and test suite |
+| **[NLP Intent Classifier](nlp-intent-classifier-from-scratch/)** | Intent classifier built from scratch — TF-IDF, embeddings, and ML baselines |
+| **[Semantic Search KNN Router](semantic-search-knn-gated-router/)** | KNN-gated semantic search router using dense embeddings and confidence thresholds |
+| **[LLM Structured Outputs Validator](llm-structured-outputs-validator/)** | Validation harness for LLM structured output compliance |
+| **[v6 Evaluation Harness](v6-The-Evaluation-Harness-main/)** | Evaluation framework for benchmarking model accuracy, latency, and contract gates |
+| **[v4+v5 Slots & Small Models](v4%2Bv5%20Slots%20%26%20Small%20Models/)** | Slot filling, entity extraction, and small model experiments |
+
+### Web Applications
+
+| Project | Description |
+| :--- | :--- |
+| **[EgiAI — Second Brain](egi-ai/)** | Autonomous AI chatbot with three brain modes, glassmorphism UI, and local knowledge base. [Live Demo](https://egiem.github.io/egi-ai/) |
+| **[SmileDent](SmileDent/)** | Dental clinic web application |
+| **[Salloni Bukurise ARTA](Salloni-Bukurise-ARTA/)** | Beauty salon website |
+| **[DrawApp](DrawApp/)** | Canvas drawing application |
+
+### Games & Fun Projects
+
+| Project | Description |
+| :--- | :--- |
+| **[Retro Tic-Tac-Toe](Retro%20TIC-TAC-TOE/)** | Retro-styled tic-tac-toe game |
+| **[Coin Flip](coin-flip/)** | Coin flip simulator |
+| **[Games Collection](Games/)** | Various browser games |
+| **[Albanian Rhyme Words](Albanian%20Rhyme%20Words/)** | Albanian rhyme word finder |
+
+### Tools & Utilities
+
+| Project | Description |
+| :--- | :--- |
+| **[Vocals Aligner Pro](vocals-aligner-pro/)** | Audio/vocals alignment tool |
+| **[Repo Organizer](Repo%20Organizer/)** | GitHub repository organization utility |
+
+---
+
+## Tech Stack
+
+- **Languages:** Python, JavaScript (ES6+), PHP, HTML5, CSS3
+- **AI/ML:** SetFit, SentenceTransformers, QLoRA, LoRA adapters, bitsandbytes, Scikit-Learn
+- **LLMs:** Qwen3-14B-AWQ, Qwen3-4B, vLLM, knowledge distillation, confidence filtering
+- **Web:** Vanilla JS, glassmorphism UI, responsive design, Google Fonts
+- **Tools:** Git, GitHub, Google Colab, OBS Studio, VS Code
+
+---
+
+## What I Learned
+
+Across eight weeks, the biggest takeaways were:
+
+1. **Data beats architecture.** The single largest accuracy lift (+8.4 points) came from expanding the training set through distillation — not from switching to a fancier model. More and cleaner data wins.
+
+2. **Measurement is engineering.** Every claim in the capstone is re-derivable from frozen golden numbers. Hand-waving gets caught; honest numbers with named limitations build trust.
+
+3. **Communication is a real skill.** A model that wins on your laptop but can't be read, run, and trusted by a stranger isn't shipped. The bundle around the model — the report, the demo, the caveats — is the actual deliverable.
+
+4. **Naming your weaknesses is a strength.** A failure analysis that says "the 14B still beats me on French and multi-intent utterances" is the most credible sentence in the whole report. It proves you measured honestly.
+
+---
+
+## Author
+
+**Endri "Egi" Emini**  
+Developer Intern @ Brigada  
+Gjilan, Kosovo
+
+[GitHub](https://github.com/EgiEm) · [EgiAI Live Demo](https://egiem.github.io/egi-ai/)
