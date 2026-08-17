@@ -1,0 +1,82 @@
+{
+  "model": "QLoRA fine-tune (Day 4)",
+  "training_environment": "Colab T4 GPU (4-bit frozen Qwen base + LoRA rank-8 adapters)",
+  "evaluation_environment": "Local deterministic eval script (golden split)",
+  "latency_p50_ms": 41.0,
+  "latency_p95_ms": 85.0,
+  "speedup": "82.9x",
+  "overall_accuracy": 0.917,
+  "exact_match": 0.917,
+  "per_intent_accuracy": {
+    "answer_question": 1.0,
+    "create_task": 1.0,
+    "out_of_scope": 1.0,
+    "place_call": 1.0,
+    "save_memory": 1.0,
+    "set_timer": 0.5
+  },
+  "confusion_matrix": {
+    "labels": [
+      "answer_question",
+      "create_task",
+      "out_of_scope",
+      "place_call",
+      "save_memory",
+      "set_timer"
+    ],
+    "matrix": [
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "speedup_gate": "green",
+  "acc_margin_gate": "green",
+  "contract_verdict": "PASS",
+  "verdict_summary": "PASS | 82.9x faster | acc drop 0.000%"
+}

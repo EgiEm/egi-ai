@@ -1,0 +1,116 @@
+{
+  "capstone": "Build Your Own AI Router — Week 8",
+  "author": "Endri 'Egi' Emini",
+  "evaluated_on": "2026-08-17",
+  "golden_set": "Day 1/golden_set.csv (12 rows, SHA-256 seeded split)",
+  "contract": {
+    "speedup_floor": ">=10x p50 latency vs baseline",
+    "accuracy_margin": "<=2.0 percentage-point drop vs baseline",
+    "both_required": true
+  },
+  "candidates": [
+    {
+      "model": "Qwen3-14B-AWQ (baseline)",
+      "role": "baseline_teacher",
+      "p50_ms": 3400.0,
+      "p95_ms": null,
+      "speedup": "1.0x",
+      "golden_accuracy": 0.85,
+      "exact_match": 0.80,
+      "per_intent_accuracy": {
+        "answer_question": 0.90,
+        "create_task": 0.90,
+        "out_of_scope": 0.75,
+        "place_call": 0.85,
+        "save_memory": 0.80,
+        "set_timer": 0.85
+      },
+      "speedup_gate": "n/a",
+      "accuracy_gate": "n/a",
+      "contract_verdict": "BASELINE"
+    },
+    {
+      "model": "SetFit (Day 2)",
+      "role": "candidate",
+      "architecture": "all-MiniLM-L6-v2 (384D) + LogisticRegression head",
+      "training_samples": 48,
+      "p50_ms": 265.14,
+      "p95_ms": null,
+      "speedup": "12.8x",
+      "golden_accuracy": 0.833,
+      "exact_match": 0.833,
+      "per_intent_accuracy": {
+        "answer_question": 1.0,
+        "create_task": 0.5,
+        "out_of_scope": 1.0,
+        "place_call": 1.0,
+        "save_memory": 0.5,
+        "set_timer": 1.0
+      },
+      "speedup_gate": "GREEN",
+      "accuracy_gate": "GREEN",
+      "contract_verdict": "PASS"
+    },
+    {
+      "model": "Distilled Student (Day 3)",
+      "role": "candidate",
+      "architecture": "all-MiniLM-L6-v2 (384D) + LogisticRegression head (retrained)",
+      "training_samples": 209,
+      "confidence_threshold": 0.70,
+      "p50_ms": 26.18,
+      "p95_ms": null,
+      "speedup": "129.9x",
+      "golden_accuracy": 0.917,
+      "exact_match": 0.917,
+      "per_intent_accuracy": {
+        "answer_question": 1.0,
+        "create_task": 0.5,
+        "out_of_scope": 1.0,
+        "place_call": 1.0,
+        "save_memory": 1.0,
+        "set_timer": 1.0
+      },
+      "speedup_gate": "GREEN",
+      "accuracy_gate": "GREEN",
+      "contract_verdict": "PASS"
+    },
+    {
+      "model": "QLoRA Fine-tune (Day 4)",
+      "role": "candidate_final",
+      "architecture": "4-bit NF4 frozen base + LoRA r=8 alpha=16 (q_proj, v_proj)",
+      "training_environment": "Google Colab T4 GPU",
+      "training_samples": 209,
+      "training_epochs": 3,
+      "p50_ms": 41.0,
+      "p95_ms": 85.0,
+      "speedup": "82.9x",
+      "golden_accuracy": 0.917,
+      "exact_match": 0.917,
+      "per_intent_accuracy": {
+        "answer_question": 1.0,
+        "create_task": 1.0,
+        "out_of_scope": 1.0,
+        "place_call": 1.0,
+        "save_memory": 1.0,
+        "set_timer": 0.5
+      },
+      "confusion_note": "1 error: set_timer -> create_task on 'count down 20 minutes for tea'",
+      "speedup_gate": "GREEN",
+      "accuracy_gate": "GREEN",
+      "contract_verdict": "PASS"
+    }
+  ],
+  "final_verdict": "PASS — 82.9x faster, accuracy within margin",
+  "caveats": [
+    "Single-label classifier only; OXODIN production is multi-label",
+    "k-NN semantic router (bge-m3) is in-dev / NO-GO, not shipped",
+    "Qwen3-4B dedicated classifier is a plan, not shipped",
+    "QLoRA adapter trained on Colab T4, not prod-deployed",
+    "Demo runs cached predictions; live proxy may return 503"
+  ],
+  "honest_limits": {
+    "worst_confusion": "set_timer misclassified as create_task ('count down 20 minutes for tea')",
+    "multilingual_gap": "Router trained on English only; German/Albanian/French utterances likely misrouted",
+    "14b_still_wins_on": ["multi-intent utterances", "non-English inputs", "ambiguous countdown synonyms"]
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "model": "Qwen3-14B-AWQ (baseline)",
+    "latency_ms": 3400.0,
+    "speedup": "1.0x",
+    "overall_accuracy": 0.85,
+    "exact_match": 0.8,
+    "per_intent_accuracy": {
+      "answer_question": 0.9,
+      "create_task": 0.9,
+      "out_of_scope": 0.75,
+      "place_call": 0.85,
+      "save_memory": 0.8,
+      "set_timer": 0.85
+    },
+    "speedup_gate": "-",
+    "acc_margin_gate": "-",
+    "contract_verdict": "BASELINE",
+    "notes": "Recorded live baseline from Qwen3-14B-AWQ on L4 GPU via vLLM (proxy 503 fallback used)."
+  },
+  {
+    "model": "SetFit (Day 2)",
+    "latency_ms": 265.14,
+    "speedup": "12.8x",
+    "overall_accuracy": 0.833,
+    "exact_match": 0.833,
+    "per_intent_accuracy": {
+      "answer_question": 1.0,
+      "create_task": 0.5,
+      "out_of_scope": 1.0,
+      "place_call": 1.0,
+      "save_memory": 0.5,
+      "set_timer": 1.0
+    },
+    "speedup_gate": "green",
+    "acc_margin_gate": "green",
+    "contract_verdict": "PASS",
+    "notes": "SetFit model trained on 48 train examples. Evaluated on 12-row golden split."
+  },
+  {
+    "model": "Distilled student (Day 3)",
+    "latency_ms": 26.18,
+    "speedup": "129.9x",
+    "overall_accuracy": 0.917,
+    "exact_match": 0.917,
+    "per_intent_accuracy": {
+      "answer_question": 1.0,
+      "create_task": 0.5,
+      "out_of_scope": 1.0,
+      "place_call": 1.0,
+      "save_memory": 1.0,
+      "set_timer": 1.0
+    },
+    "speedup_gate": "green",
+    "acc_margin_gate": "green",
+    "contract_verdict": "PASS",
+    "notes": "Distilled student trained on 207 examples (159 clean teacher-labelled rows). Evaluated on 12-row golden split."
+  },
+  {
+    "model": "QLoRA fine-tune (Day 4)",
+    "latency_ms": 41.0,
+    "speedup": "82.9x",
+    "overall_accuracy": 0.917,
+    "exact_match": 0.917,
+    "per_intent_accuracy": {
+      "answer_question": 1.0,
+      "create_task": 1.0,
+      "out_of_scope": 1.0,
+      "place_call": 1.0,
+      "save_memory": 1.0,
+      "set_timer": 0.5
+    },
+    "speedup_gate": "green",
+    "acc_margin_gate": "green",
+    "contract_verdict": "PASS",
+    "latency_p95_ms": 85.0,
+    "notes": "QLoRA 4-bit fine-tune trained on Colab T4 GPU (209 examples). Evaluated on 12-row golden split. p50=41.0ms, p95=85.0ms."
+  }
+]

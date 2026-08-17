@@ -1,0 +1,74 @@
+[
+  {
+    "golden_text": "pick up groceries after work today",
+    "golden_label": "create_task",
+    "predicted_label": "create_task",
+    "latency_ms": 38.4
+  },
+  {
+    "golden_text": "make sure I water the plants before noon",
+    "golden_label": "create_task",
+    "predicted_label": "create_task",
+    "latency_ms": 42.1
+  },
+  {
+    "golden_text": "ring the restaurant and ask about reservations",
+    "golden_label": "place_call",
+    "predicted_label": "place_call",
+    "latency_ms": 39.8
+  },
+  {
+    "golden_text": "reach out to the insurance company now",
+    "golden_label": "place_call",
+    "predicted_label": "place_call",
+    "latency_ms": 40.5
+  },
+  {
+    "golden_text": "how far is the moon from the earth",
+    "golden_label": "answer_question",
+    "predicted_label": "answer_question",
+    "latency_ms": 44.2
+  },
+  {
+    "golden_text": "what language do they speak in Brazil",
+    "golden_label": "answer_question",
+    "predicted_label": "answer_question",
+    "latency_ms": 41.0
+  },
+  {
+    "golden_text": "keep a note that the meeting room code is 7788",
+    "golden_label": "save_memory",
+    "predicted_label": "save_memory",
+    "latency_ms": 43.7
+  },
+  {
+    "golden_text": "remember that the spare key is under the blue pot",
+    "golden_label": "save_memory",
+    "predicted_label": "save_memory",
+    "latency_ms": 41.8
+  },
+  {
+    "golden_text": "set a timer for 15 minutes for the pizza",
+    "golden_label": "set_timer",
+    "predicted_label": "set_timer",
+    "latency_ms": 45.1
+  },
+  {
+    "golden_text": "count down 20 minutes for tea",
+    "golden_label": "set_timer",
+    "predicted_label": "create_task",
+    "latency_ms": 85.0
+  },
+  {
+    "golden_text": "play some relaxed jazz music",
+    "golden_label": "out_of_scope",
+    "predicted_label": "out_of_scope",
+    "latency_ms": 37.9
+  },
+  {
+    "golden_text": "dim the bedroom lights to 20 percent",
+    "golden_label": "out_of_scope",
+    "predicted_label": "out_of_scope",
+    "latency_ms": 39.2
+  }
+]

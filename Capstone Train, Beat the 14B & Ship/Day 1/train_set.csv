@@ -1,0 +1,49 @@
+text,label
+add dentist appointment to my list for friday,create_task
+schedule a meeting with the team at 3pm,create_task
+jot down that I need to renew my passport,create_task
+put return library books on my agenda,create_task
+I need to book a haircut for next thursday,create_task
+grab the package from the post office tomorrow,create_task
+plan a birthday surprise for Jake this weekend,create_task
+remind me to pay the electricity bill tonight,create_task
+get my brother on the phone please,place_call
+connect me with the tech support line,place_call
+I want to speak with the HR department,place_call
+call the babysitter to confirm tonight,place_call
+can you phone the garage about my car,place_call
+talk to the front desk at the hotel,place_call
+dial doctor office for an appointment,place_call
+call Mom on mobile right now,place_call
+what year was the first iPhone released,answer_question
+who painted the Mona Lisa and when,answer_question
+what is the largest ocean on the planet,answer_question
+how does a combustion engine work,answer_question
+tell me the population of Tokyo,answer_question
+who discovered penicillin,answer_question
+what is the boiling point of water,answer_question
+explain how photosynthesis works,answer_question
+remember that Alex prefers oat milk in his coffee,save_memory
+save the Wi-Fi password as guest2026,save_memory
+note down that my locker combination is 1429,save_memory
+store the recipe for Grandma's apple pie,save_memory
+save this link for reading later tonight,save_memory
+note that Sarah's birthday is October 14th,save_memory
+keep in mind that the gate code changed,save_memory
+store my frequent flyer number under Delta,save_memory
+wake me up in 45 minutes,set_timer
+start a 10 minute countdown right now,set_timer
+timer for 5 minutes please,set_timer
+set alarm for 7am tomorrow morning,set_timer
+set a 30 minute timer for my break,set_timer
+remind me in 5 minutes with a timer,set_timer
+start timer 12 minutes,set_timer
+wake me up at 6:30 tomorrow,set_timer
+turn on the living room lights,out_of_scope
+what is the current stock price of Apple,out_of_scope
+order a pepperoni pizza from Dominoes,out_of_scope
+open Spotify and play my favourite playlist,out_of_scope
+book a flight to Paris for next month,out_of_scope
+volume up to 80 percent,out_of_scope
+what is the weather like in Berlin today,out_of_scope
+play the latest news podcast,out_of_scope

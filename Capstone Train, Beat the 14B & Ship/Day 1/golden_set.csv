@@ -1,0 +1,13 @@
+text,label
+pick up groceries after work today,create_task
+make sure I water the plants before noon,create_task
+ring the restaurant and ask about reservations,place_call
+reach out to the insurance company now,place_call
+how far is the moon from the earth,answer_question
+what language do they speak in Brazil,answer_question
+keep a note that the meeting room code is 7788,save_memory
+remember that the spare key is under the blue pot,save_memory
+set a timer for 15 minutes for the pizza,set_timer
+count down 20 minutes for tea,set_timer
+play some relaxed jazz music,out_of_scope
+dim the bedroom lights to 20 percent,out_of_scope

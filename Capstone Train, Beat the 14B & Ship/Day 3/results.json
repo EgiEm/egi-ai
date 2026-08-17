@@ -1,0 +1,85 @@
+{
+  "model": "Distilled student (Day 3)",
+  "pool_size": 167,
+  "spot_check_error_rate_pct": 0.0,
+  "confidence_threshold": 0.7,
+  "kept_filtered_rows": 161,
+  "golden_set_leakage_count": 0,
+  "teacher_student_initial_agreement": 0.731,
+  "training_samples_total": 209,
+  "latency_ms": 26.18,
+  "speedup": "129.9x",
+  "overall_accuracy": 0.917,
+  "day2_accuracy": 0.833,
+  "accuracy_lift": 8.37,
+  "per_intent_accuracy": {
+    "answer_question": 1.0,
+    "create_task": 0.5,
+    "out_of_scope": 1.0,
+    "place_call": 1.0,
+    "save_memory": 1.0,
+    "set_timer": 1.0
+  },
+  "confusion_matrix": {
+    "labels": [
+      "answer_question",
+      "create_task",
+      "out_of_scope",
+      "place_call",
+      "save_memory",
+      "set_timer"
+    ],
+    "matrix": [
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    ]
+  },
+  "contract_verdict": "PASS",
+  "embedder_used": "SentenceTransformer(all-MiniLM-L6-v2)"
+}

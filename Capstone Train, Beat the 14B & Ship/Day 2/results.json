@@ -1,0 +1,76 @@
+{
+  "model": "SetFit (Day 2)",
+  "latency_ms": 265.14,
+  "speedup": "12.8x",
+  "overall_accuracy": 0.833,
+  "per_intent_accuracy": {
+    "answer_question": 1.0,
+    "create_task": 0.5,
+    "out_of_scope": 1.0,
+    "place_call": 1.0,
+    "save_memory": 0.5,
+    "set_timer": 1.0
+  },
+  "confusion_matrix": {
+    "labels": [
+      "answer_question",
+      "create_task",
+      "out_of_scope",
+      "place_call",
+      "save_memory",
+      "set_timer"
+    ],
+    "matrix": [
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    ]
+  },
+  "contract_verdict": "PASS",
+  "embedder_used": "SentenceTransformer(all-MiniLM-L6-v2)"
+}
